@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/datmanslo/docker-catt.svg?branch=master)](https://travis-ci.org/datmanslo/docker-catt)
 # docker-catt
 "Dockerized" version of https://github.com/skorokithakis/catt: Cast All The Things
 ## Usage:
