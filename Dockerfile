@@ -3,7 +3,7 @@ ARG BASE_OS_VERSION="3.10.1"
 
 FROM ${BASE_OS}:${BASE_OS_VERSION}
 
-ARG CATT_VERSION=0.9.5
+ARG CATT_VERSION=0.10.0
 
 LABEL maintainer="datmanslo@yahoo.com" \
       version="1.0" \
