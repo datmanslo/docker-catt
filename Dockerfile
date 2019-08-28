@@ -6,7 +6,7 @@ FROM ${BASE_OS}:${BASE_OS_VERSION}
 ARG CATT_VERSION=0.10.0
 
 LABEL maintainer="datmanslo@yahoo.com" \
-      version="1.0" \
+      version="0.10.0" \
       repo="github.com/datmanslo/docker-catt"
 
 RUN apk add --no-cache python3 py3-pip && \
