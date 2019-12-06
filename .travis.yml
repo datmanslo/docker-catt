@@ -7,4 +7,4 @@ install:
   - docker build -t datmanslo/catt .
 
 script:
-  - docker run --rm --name catt datmanslo/catt --version | grep -c "catt v0.10.0, Winter Waterfall." || travis_terminate 1
+  - docker run --rm --name catt datmanslo/catt --version | grep -c "catt v0.10.2, Xylophone Xtravaganza." || travis_terminate 1
