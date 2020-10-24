@@ -45,6 +45,7 @@ jobs:
         uses: docker/setup-buildx-action@v1
         with:
           version: latest
+          install: true
       -
         name: Available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
@@ -55,7 +56,7 @@ jobs:
       - name: build the image
         run: |
           docker build \
-            --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x \
+            --platform linux/amd64,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6,linux/amd64,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6 \
             --output "type=image,push=true" \
             --tag datmanslo/catt:$RELEASE_VERSION \
             - < ./Dockerfile
