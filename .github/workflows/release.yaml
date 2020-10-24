@@ -11,14 +11,15 @@ jobs:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout code
+      - 
+        name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set env
+      - 
+        name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
-      - name: Create Release
+      - 
+        name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -33,14 +34,19 @@ jobs:
           draft: false
           prerelease: false
       
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: crazy-max/ghaction-docker-buildx@v3
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
         with:
-          buildx-version: latest
-          qemu-version: latest
-
-      - name: Available platforms
+          platforms: all
+      -
+        name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+      -
+        name: Available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
 
       - name: login to docker hub
@@ -48,7 +54,7 @@ jobs:
 
       - name: build the image
         run: |
-          docker buildx build \
+          docker build \
             --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x \
             --output "type=image,push=true" \
             --tag datmanslo/catt:$RELEASE_VERSION \
