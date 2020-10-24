@@ -1,12 +1,12 @@
 ARG BASE_OS="alpine"
-ARG BASE_OS_VERSION="3.10.1"
+ARG BASE_OS_VERSION="3.12.1"
 
 FROM ${BASE_OS}:${BASE_OS_VERSION}
 
 ARG CATT_VERSION=0.11.3
 
 LABEL maintainer="datmanslo@yahoo.com" \
-      version="0.10.0" \
+      version="{CATT_VERSION}" \
       repo="github.com/datmanslo/docker-catt"
 
 RUN apk add --no-cache python3 py3-pip && \
