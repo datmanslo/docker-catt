@@ -3,7 +3,7 @@ ARG BASE_OS_VERSION="3.12.1"
 
 FROM ${BASE_OS}:${BASE_OS_VERSION}
 
-ARG CATT_VERSION=0.11.3
+ARG CATT_VERSION=0.11.2
 
 LABEL maintainer="datmanslo@yahoo.com" \
       version="{CATT_VERSION}" \
@@ -11,7 +11,6 @@ LABEL maintainer="datmanslo@yahoo.com" \
 
 RUN apk add --no-cache python3 py3-pip && \
     pip3 install catt==${CATT_VERSION} && \
-    apk del --purge py3-pip && \
     rm -rf /root/.cache/pip
 
 ENTRYPOINT ["catt"]

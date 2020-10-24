@@ -4,7 +4,7 @@ set -o errexit
 
 base_os="alpine"
 base_os_version="3.12.1"
-catt_version="v0.11.3"
+catt_version="v0.11.2"
 container=$(buildah from $base_os:$base_os_version)
 image_name="datmanslo/catt"
 
@@ -14,8 +14,7 @@ buildah config --label version=$catt_version $container
 buildah config --label repo="github.com/datmanslo/docker-catt" $container
 
 buildah run $container apk add --no-cache python3 py3-pip
-buildah run $container pip3 install catt==$catt_version
-buildah run $container apk del --purge py3-pip
+buildah run $container python3 -m pip install catt==$catt_version
 buildah run $container rm -rf /root/.cache/pip
 
 buildah config --entrypoint catt $container
