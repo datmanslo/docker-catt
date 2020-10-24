@@ -6,17 +6,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
       - name: checkout code
         uses: actions/checkout@v2
-      - name: install buildx
+
+      - name: Set up Docker Buildx
         id: buildx
-        uses: crazy-max/ghaction-docker-buildx@v1
+        uses: crazy-max/ghaction-docker-buildx@v3
         with:
-          version: latest
+          buildx-version: latest
+          qemu-version: latest
+
+      - name: Available platforms
+        run: echo ${{ steps.buildx.outputs.platforms }}
+
       - name: login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
       - name: build the image
         run: |
-          docker buildx build --push
-            --tag datmanslo/catt:latest
-            --platform linux/amd64,linux/arm/v7,linux/arm64 - < Dockerfile
+          docker buildx build \
+            --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x \
+            --output "type=image,push=true" \
+            - < ./Dockerfile
