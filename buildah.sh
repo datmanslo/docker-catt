@@ -4,7 +4,7 @@ set -o errexit
 
 base_os="alpine"
 base_os_version="3.12.1"
-catt_version="v0.11.3"
+catt_version="v0.11.2"
 container=$(buildah from $base_os:$base_os_version)
 image_name="datmanslo/catt"
 
