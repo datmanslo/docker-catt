@@ -14,8 +14,7 @@ buildah config --label version=$catt_version $container
 buildah config --label repo="github.com/datmanslo/docker-catt" $container
 
 buildah run $container apk add --no-cache python3 py3-pip
-buildah run $container pip3 install catt==$catt_version
-buildah run $container apk del --purge py3-pip
+buildah run $container python3 -m pip install catt==$catt_version
 buildah run $container rm -rf /root/.cache/pip
 
 buildah config --entrypoint catt $container
