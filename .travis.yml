@@ -7,4 +7,4 @@ install:
   - docker build -t datmanslo/catt .
 
 script:
-  - docker run --rm --name catt datmanslo/catt --version | grep -c "catt v0.11.2, Yearning Yachtman." || travis_terminate 1
+  - docker run --rm --name catt datmanslo/catt --version | grep -c "catt v0.11.3, Yearning Yachtman." || travis_terminate 1
