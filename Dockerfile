@@ -11,7 +11,6 @@ LABEL maintainer="datmanslo@yahoo.com" \
 
 RUN apk add --no-cache python3 py3-pip && \
     pip3 install catt==${CATT_VERSION} && \
-    apk del --purge py3-pip && \
     rm -rf /root/.cache/pip
 
 ENTRYPOINT ["catt"]
