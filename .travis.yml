@@ -7,4 +7,4 @@ install:
   - docker build -t datmanslo/catt .
 
 script:
-  - docker run --rm --name catt datmanslo/catt --version | grep -c "catt v0.12.0, Zaniest Zapper." || travis_terminate 1
+  - docker run --rm --name catt datmanslo/catt --version | grep -c "catt v0.13.0, Zaniest Zapper." || travis_terminate 1
