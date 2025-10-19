@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/datmanslo/docker-catt.svg?branch=main)](https://travis-ci.com/datmanslo/docker-catt)
+[![Docker Build and Test](https://github.com/datmanslo/docker-catt/actions/workflows/docker-build.yml/badge.svg)](https://github.com/datmanslo/docker-catt/actions/workflows/docker-build.yml)
 # docker-catt
 "Dockerized" version of https://github.com/skorokithakis/catt: Cast All The Things
 ## Usage:

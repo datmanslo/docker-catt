@@ -1,0 +1,32 @@
+name: Docker Build and Test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: datmanslo/catt:latest
+          load: true
+      
+      - name: Test Docker image
+        run: |
+          docker run --rm --name catt datmanslo/catt:latest --version | grep -c "catt v0.13.0, Zaniest Zapper." || exit 1
+
